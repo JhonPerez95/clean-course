@@ -25,23 +25,30 @@
   let isFourthStepWorking = true
 
   function workingSteps() {
-    if (isFirstStepWorking === true) {
-      if (isSecondStepWorking === true) {
-        if (isThirdStepWorking === true) {
-          if (isFourthStepWorking === true) {
-            return 'Working properly!'
-          } else {
-            return 'Fourth step broken.'
-          }
-        } else {
-          return 'Third step broken.'
-        }
-      } else {
-        return 'Second step broken.'
-      }
-    } else {
-      return 'First step broken.'
-    }
+    if (!isFirstStepWorking) return 'First step broken.'
+    if (!isSecondStepWorking) return 'Second step broken.'
+    if (!isThirdStepWorking) return 'Third step broken.'
+    if (!isFourthStepWorking) return 'Fourth step broken.'
+
+    return 'Working properly!'
+
+    // if (isFirstStepWorking === true) {
+    //   if (isSecondStepWorking === true) {
+    //     if (isThirdStepWorking === true) {
+    //       if (isFourthStepWorking === true) {
+    //         return 'Working properly!'
+    //       } else {
+    //         return 'Fourth step broken.'
+    //       }
+    //     } else {
+    //       return 'Third step broken.'
+    //     }
+    //   } else {
+    //     return 'Second step broken.'
+    //   }
+    // } else {
+    //   return 'First step broken.'
+    // }
   }
 
   // isRedFruit
