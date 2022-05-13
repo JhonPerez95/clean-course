@@ -15,8 +15,7 @@
       yellow: ['piña', 'banana'],
       purple: ['moras', 'uvas'],
     }
-    return colorFruits[color] ??  Error('the color must be: red, yellow, purple')
-
+    return colorFruits[color] ?? Error('the color must be: red, yellow, purple')
   }
 
   // Simplificar esta función
