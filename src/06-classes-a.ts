@@ -21,19 +21,15 @@
   }
 
   interface UserProps {
-    birthdate: Date
     email: string
-    gender: Gender
-    name: string
     role: string
   }
-  class User extends Person {
-    public lastAccess: Date
+  class User {
     public email: string
+    public lastAccess: Date
     public role: string
 
-    constructor({ name, gender, birthdate, email, role }: UserProps) {
-      super({ name, gender, birthdate })
+    constructor({ email, role }: UserProps) {
       this.lastAccess = new Date()
       this.email = email
       this.role = role
@@ -41,6 +37,20 @@
 
     checkCredentials() {
       return true
+    }
+  }
+
+  interface SettingsProps {
+    lastOpenFolder: string
+    workingDirectory: string
+  }
+
+  class Settings {
+    public workingDirectory: string
+    public lastOpenFolder: string
+    constructor({ lastOpenFolder, workingDirectory }: SettingsProps) {
+      this.workingDirectory = workingDirectory
+      this.lastOpenFolder = lastOpenFolder
     }
   }
 
@@ -53,10 +63,11 @@
     role: string
     workingDirectory: string
   }
+  class UserSettings {
+    public person: Person
+    public user: User
+    public settings: Settings
 
-  class UserSettings extends User {
-    public workingDirectory: string
-    public lastOpenFolder: string
     constructor({
       birthdate,
       email,
@@ -66,12 +77,11 @@
       role,
       workingDirectory,
     }: UserSettingsProps) {
-      super({ email, role, name, gender, birthdate })
-      this.workingDirectory = workingDirectory
-      this.lastOpenFolder = lastOpenFolder
+      this.person = new Person({ name, gender, birthdate })
+      this.user = new User({ email, role })
+      this.settings = new Settings({ lastOpenFolder, workingDirectory })
     }
   }
-
   const userSettings = new UserSettings({
     workingDirectory: '/usr/home',
     lastOpenFolder: '/home',
